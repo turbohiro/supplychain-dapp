@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Supplychain BlockChain Demo</title>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+	<link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+	<link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' crossorigin="anoymous">
+	<link href="https://cdn.bootcss.com/bootstrap-select/1.12.4/css/bootstrap-select.min.css" rel="stylesheet">
+	<style>
+		.margin-top-1{
+			margin-top: 1em;
+			color:'green';	
+		}
+	</style>
+</head>
+
+<body class="container">
+<h2 style="text-align:center;color:green">Supplychain BlockChain Demo</h2>
+<ul class="nav nav-tabs">
+	<li class="active"><a data-toggle="tab" href="#sectionA" id="home_supplierchain_tab"><i class= "fa fa-user"></i>供应链平台</a>
+	</li>
+	<li><a data-toggle="tab" href="#sectionB" id="supplier_tab"><i class= "fa fa-industry"></i>供应商信息</a>
+	</li>
+	<li><a data-toggle="tab" href="#sectionC" id="distributor_tab"><i class= "fa fa-cog"></i>制造商信息</a>
+	</li>
+	<li><a data-toggle="tab" href="#sectionD" id="distributor_tab"><i class= "fa fa-car"></i>经销商信息</a>
+	</li>
+</ul>
+
+<!-- 供应链平台页面 -->
+<div class="tab-content">
+	<div id="sectionA" class="tab-pane fade in active">
+		<div class="panel panel-success margin-top-1">
+			<div class="panel-heading">
+				<h3 class="panel-title">平台信息</h3>
+			</div>
+			<div class="panel-body">
+				<table class="table table-striped">
+					<tbody>
+					<tr class='active'>
+						<td> 平台地址：</td>
+						<td id="platformAccount"></td>
+					</tr>
+					<tr class='success'>
+						<td>平台打赏：</td>
+						<td id="platformBalance"></td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<div class="panel panel-success">
+			<div class= "panel-heading">
+				<h3 class="panel-title">供应链各环节已注册公司</h3>
+			</div>
+			<div class="panel-body">
+				<table class="table table-striped">
+					<tr class='success'>
+						<td>id</td>
+						<td>name</td>
+						<td>address</td>
+					</tr>
+					<tbody id="companyList">           
+					
+					</tbody>
+				</table>
+			</div>	
+		</div>
+		
+		<div class="panel panel-success test-center">
+			<div class= "panel-heading">
+				<h3 class="panel-title">公司账户注册</h3>
+			</div>
+			
+			<div class="panel-body">
+				<table class="table table-striped">
+					<tbody>
+					<tr  class='success'>
+						<td style="text-align:left">company type</td>
+						
+						<td>
+						<div class="form-group">
+							<select class="selectpicker" data-live-search="true" data-size="5" id="companyType">
+								<option value='1'>Supplier</option>
+								<option value='2'>Manufacture</option>
+								<option value='3'>Distributor</option>
+							</select>
+						</div>
+						</td>
+						
+						
+					</tr>
+					<tr class='active'>
+						<td style="text-align:left">company name</td>
+						<td>
+							<input type="text" class="form-control" id="companyName" placeholder="company name">
+						</td>
+					</tr>
+					<tr  class='success'>
+						<td style="text-align:left">company address</td>
+						<td>
+							<input type="text" class="form-control" id="companyAddress" placeholder="company address">
+						</td>
+					</tr>
+					
+					<tr>
+						<td colspan="2">
+							<button id="registerBtn" class="btn btn-success">注册</button>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			
+		</div>
+	</div>
+	
+	<!-- 供应商信息页面 -->
+	<div id="sectionB" class="tab-pane fade in active">
+		<div class="panel panel-success margin-top-1">
+			<div class="panel-heading">
+				<h3 class="panel-title">供应商信息</h3>
+			</div>
+			<div class="panel-body">
+				<table class="table table-striped">
+					<tbody>
+						<tr class='active'>
+							<td>公司名称：</td>
+							<td id="Myname1"></td>
+						</tr>
+						<tr class='success'>
+							<td>账户地址：</td>
+							<td id="myAddress1"></td>
+						</tr>
+						<tr class='info'>
+							<td>打赏：</td>
+							<td id="myBalance1"></td>
+						</tr>
+					</tbody>
+				 </table>
+			</div>
+		</div>
+		
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<h3 class="panel-title">原料信息发布</h3>
+			</div>
+			<div class="panel-body">
+				<div>
+					<textarea id="supplierInformation" style="width:900px;height:150px;overflow:scroll;resize:none;"></textarea>
+					<button id="sendsupplierInformationBtn" class="btn btn-success">发布</button>
+					<textarea id="RecentsupplierInformation" style="width:800px;height:80px;overflow:scroll;resize:none;"></textarea>
+					<button id="getsupplierInformationBtn" class="btn btn-success">显示最近一条信息</button>
+				</div>
+			</div>
+		</div>
+		
+		<div class="panel panel-success">
+			<div class= "panel-heading">
+				<h3 class="panel-title">公开信息记录</h3>
+			</div>
+			<div class="panel-body">
+				<table class="table table-striped">
+					<tr class='success'>
+						<td>id</td>
+						<td>content</td>
+						<td>timestamp</td>
+					</tr>
+					<tbody id="supplierContentList">
+					
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>	
+	
+	<!-- 制造商信息页面 -->
+	<div id="sectionC" class="tab-pane fade in active">
+		<div class="panel panel-success margin-top-1">
+			<div class="panel-heading">
+				<h3 class="panel-title">制造商信息</h3>
+			</div>
+			<div class="panel-body">
+				<table class="table table-striped">
+					<tbody>
+						<tr class='active'>
+							<td>公司名称：</td>
+							<td id="Myname2"></td>
+						</tr>
+						<tr class='success'>
+							<td>账户地址：</td>
+							<td id="myAddress2"></td>
+						</tr>
+						<tr class='info'>
+							<td>打赏：</td>
+							<td id="myBalance2"></td>
+						</tr>
+					</tbody>
+				 </table>
+			</div>
+		</div>
+		
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<h3 class="panel-title">产品信息发布</h3>
+			</div>
+			<div class="panel-body">
+				<div>
+					<textarea id="manufactureInformation" style="width:900px;height:150px;overflow:scroll;resize:none;"></textarea>
+					<button id="manufactureInformationBtn" class="btn btn-success">发布</button>
+					<textarea id="RecentmanufactureInformation" style="width:800px;height:80px;overflow:scroll;resize:none;"></textarea>
+					<button id="getRecentmanufactureInformationBtn" class="btn btn-success">显示最近一条信息</button>
+				</div>
+			</div>
+		</div>
+		
+
+		<div class="panel panel-success">
+			<div class= "panel-heading">
+				<h3 class="panel-title">信息发布记录</h3>
+			</div>
+			<div class="panel-body">
+				<table class="table table-striped">
+					<tr class='success'>
+						<td>id</td>
+						<td>content</td>
+						<td>timestamp</td>
+					</tr>
+					<tbody id="manufactureContentList">
+					
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>	
+	
+	<!-- 经销商信息页面 -->
+	<div id="sectionD" class="tab-pane fade in active">
+		<div class="panel panel-success margin-top-1">
+			<div class="panel-heading">
+				<h3 class="panel-title">经销商信息</h3>
+			</div>
+			<div class="panel-body">
+				<table class="table table-striped">
+					<tbody>
+						<tr class='active'>
+							<td>公司名称：</td>
+							<td id="Myname3"></td>
+						</tr>
+						<tr class='success'>
+							<td>账户地址：</td>
+							<td id="myAddress3"></td>
+						</tr>
+						<tr class='info'>
+							<td>打赏：</td>
+							<td id="myBalance3"></td>
+						</tr>
+					</tbody>
+				 </table>
+			</div>
+		</div>
+		
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<h3 class="panel-title">销售信息发布</h3>
+			</div>
+			<div class="panel-body">
+				<div>
+					<textarea id="distributorInformation" style="width:900px;height:150px;overflow:scroll;resize:none;"></textarea>
+					<button id="senddistributorInformationBtn" class="btn btn-success">发布</button>
+					<textarea id="RecentdistributorInformationContent" style="width:800px;height:80px;overflow:scroll;resize:none;"></textarea>
+					<button id="getRecentdistributorInformationBtn" class="btn btn-success">显示最近一条信息</button>
+				</div>
+			</div>
+		</div>
+		
+
+		<div class="panel panel-success">
+			<div class= "panel-heading">
+				<h3 class="panel-title">信息发布记录</h3>
+			</div>
+			<div class="panel-body">
+				<table class="table table-striped">
+					<tr class='success'>
+						<td>id</td>
+						<td>content</td>
+						<td>timestamp</td>
+					</tr>
+					<tbody id="distributorContentList">
+					
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>	
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.4/js/i18n/defaults-zh_CN.min.js"></script>
+
+<!-- 引用页面逻辑脚本 -->
+<script src="app.js"></script>
+</html>

@@ -1,0 +1,11 @@
+contract Storage{
+    uint256 storagedata;
+    
+    function setStorage(uint256 data){
+        storagedata=data;
+    }
+    
+    function getStorage() constant returns(uint256){
+        return storagedata;
+    }
+}

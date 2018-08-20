@@ -1,0 +1,13 @@
+{
+  "name":"supplychain",
+  "version": "1.0.0",
+  "description": "Example supplychain",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "wenkai chen <cwkturbo@sjtu.edu.cn>",
+  "license": "MIT",
+  "dependencies": {
+    "truffle-default-builder": "^2.0.0"
+  }
+}
